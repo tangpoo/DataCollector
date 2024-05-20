@@ -2,6 +2,8 @@ package study.tangpoo.livecodingtest.controller;
 
 import static study.tangpoo.livecodingtest.message.Message.SUCCESS;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +15,7 @@ import study.tangpoo.livecodingtest.dto.dataDevice.DataDeviceReq;
 import study.tangpoo.livecodingtest.dto.dataDevice.DataDeviceRes;
 import study.tangpoo.livecodingtest.service.DataDeviceService;
 
+@Tag(name = "DataDevice API")
 @RestController
 @RequiredArgsConstructor
 public class DataDeviceController {
@@ -20,6 +23,7 @@ public class DataDeviceController {
     private final DataDeviceService dataDeviceService;
 
     @PostMapping("/data/device")
+    @Operation(summary = "데이터 수집 장치 등록")
     public ResponseEntity<ResponseDto<DataDeviceRes>> saveDataDevice(
         @RequestBody DataDeviceReq dataDeviceReq) {
 
@@ -28,7 +32,7 @@ public class DataDeviceController {
         return ResponseEntity.status(HttpStatus.CREATED)
             .body(ResponseDto.<DataDeviceRes>builder()
                 .data(dataDeviceRes)
-                .Message(SUCCESS)
+                .message(SUCCESS)
                 .build());
     }
 }

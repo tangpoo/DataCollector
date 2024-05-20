@@ -9,7 +9,7 @@ import lombok.Getter;
 public class DataReq {
 
     private String serialNumber;
-    private int interval;
+    private Integer interval;
     private String dataSet;
     private LocalDateTime recorded_at;
 }

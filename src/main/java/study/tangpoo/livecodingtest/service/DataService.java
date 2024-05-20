@@ -17,6 +17,6 @@ public class DataService {
         DataEntity dataEntity = new DataEntity(dataReq.getSerialNumber(), dataReq.getInterval(),
             dataReq.getDataSet(), dataReq.getRecorded_at());
 
-        DataEntity saveDataEntity = dataRepository.save(dataEntity);
+        dataRepository.save(dataEntity);
     }
 }

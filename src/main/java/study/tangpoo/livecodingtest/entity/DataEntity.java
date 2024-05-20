@@ -7,10 +7,12 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import java.time.LocalDateTime;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 
 @Entity
 @Getter
+@NoArgsConstructor
 public class DataEntity {
 
     @Id
@@ -21,19 +23,18 @@ public class DataEntity {
     private String serialNumber;
 
     @Column
-    private int interval;
+    private Integer timeInterval;
 
     @Column
-    private String dateSet;
+    private String dataSet;
 
     @Column
-    @CreatedDate
     private LocalDateTime recordedAt;
 
-    public DataEntity(String serialNumber, int interval, String dateSet, LocalDateTime recordedAt) {
+    public DataEntity(String serialNumber, Integer interval, String dataSet, LocalDateTime recordedAt) {
         this.serialNumber = serialNumber;
-        this.interval = interval;
-        this.dateSet = dateSet;
+        this.timeInterval = interval;
+        this.dataSet = dataSet;
         this.recordedAt = recordedAt;
     }
 }

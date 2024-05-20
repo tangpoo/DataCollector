@@ -13,7 +13,7 @@ import org.springframework.data.annotation.CreatedDate;
 @Entity
 @Getter
 @NoArgsConstructor
-public class StationGroupEntity {
+public class StationGroupEntity extends BaseTime {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,10 +21,6 @@ public class StationGroupEntity {
 
     @Column(unique = true)
     private String serialNumber;
-
-    @Column
-    @CreatedDate
-    private LocalDateTime createdAt;
 
     public StationGroupEntity(String serialNumber) {
         this.serialNumber = serialNumber;
