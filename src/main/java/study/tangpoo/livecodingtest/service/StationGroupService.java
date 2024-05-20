@@ -1,6 +1,7 @@
 package study.tangpoo.livecodingtest.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import study.tangpoo.livecodingtest.dto.stationGroup.StationGroupReq;
 import study.tangpoo.livecodingtest.dto.stationGroup.StationGroupRes;
@@ -14,6 +15,10 @@ public class StationGroupService {
     private final StationGroupRepository stationGroupRepository;
 
     public StationGroupRes saveStationGroup(StationGroupReq stationGroupReq) {
+
+        if(stationGroupRepository.existsBySerialNumber(stationGroupReq.getStationGroupSerial())){
+            throw new DataIntegrityViolationException("중복된 데이터 수집 장치 그룹입니다.");
+        }
 
         StationGroupEntity stationGroupEntity = new StationGroupEntity(
             stationGroupReq.getStationGroupSerial());

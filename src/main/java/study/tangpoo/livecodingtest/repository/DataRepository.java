@@ -5,4 +5,5 @@ import study.tangpoo.livecodingtest.entity.DataEntity;
 
 public interface DataRepository extends JpaRepository<DataEntity, Long> {
 
+    boolean existsByDataSet(String dataSet);
 }
