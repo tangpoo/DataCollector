@@ -26,12 +26,12 @@ public class DataEntity {
     private Integer timeInterval;
 
     @Column
-    private String dataSet;
+    private Integer dataSet;
 
     @Column
     private LocalDateTime recordedAt;
 
-    public DataEntity(String serialNumber, Integer interval, String dataSet, LocalDateTime recordedAt) {
+    public DataEntity(String serialNumber, Integer interval, Integer dataSet, LocalDateTime recordedAt) {
         this.serialNumber = serialNumber;
         this.timeInterval = interval;
         this.dataSet = dataSet;
