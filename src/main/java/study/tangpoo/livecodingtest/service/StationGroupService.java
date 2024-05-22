@@ -16,7 +16,7 @@ public class StationGroupService {
 
     public StationGroupRes saveStationGroup(StationGroupReq stationGroupReq) {
 
-        if(stationGroupRepository.existsBySerialNumber(stationGroupReq.getStationGroupSerial())){
+        if (stationGroupRepository.existsBySerialNumber(stationGroupReq.getStationGroupSerial())) {
             throw new DataIntegrityViolationException("중복된 데이터 수집 장치 그룹입니다.");
         }
 

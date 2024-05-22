@@ -6,7 +6,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.SequenceGenerator;
 import java.time.LocalDateTime;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,12 +13,11 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor
-@SequenceGenerator(name = "SEQ_ACCESS_IP_GENERATOR", sequenceName = "SEQ_ACCESS_IP", initialValue = 1, allocationSize = 1)
 public class WhiteIp {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_ACCESS_IP_GENERATOR")
-    @Column(name = "rec_key", columnDefinition = "int8 DEFAULT nextval('SEQ_ACCESS_IP'::regclass)")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "rec_key")
     private Long recKey;
 
     @Column(name = "access_ip", length = 20)

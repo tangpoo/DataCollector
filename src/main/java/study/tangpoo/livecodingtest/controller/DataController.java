@@ -61,7 +61,8 @@ public class DataController {
         @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss.SSSSSS") LocalDateTime startTime,
         @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss.SSSSSS") LocalDateTime endTime
     ) {
-        List<DataRes> byDataDeviceList = dataService.findByStationGroup(stationGroupSerialNumber, startTime,
+        List<DataRes> byDataDeviceList = dataService.findByStationGroup(stationGroupSerialNumber,
+            startTime,
             endTime);
 
         return ResponseEntity.ok()

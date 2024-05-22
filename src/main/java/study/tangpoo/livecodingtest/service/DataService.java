@@ -1,6 +1,5 @@
 package study.tangpoo.livecodingtest.service;
 
-import jakarta.persistence.EntityNotFoundException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import study.tangpoo.livecodingtest.dto.data.DataReq;
 import study.tangpoo.livecodingtest.dto.data.DataRes;
-import study.tangpoo.livecodingtest.entity.DataDeviceEntity;
 import study.tangpoo.livecodingtest.entity.DataEntity;
 import study.tangpoo.livecodingtest.repository.DataDeviceRepository;
 import study.tangpoo.livecodingtest.repository.DataQueryRepository;
@@ -42,7 +40,8 @@ public class DataService {
     }
 
     @Transactional(readOnly = true)
-    public List<DataRes> findByStationGroup(String stationGroupSerialNumber, LocalDateTime startDate,
+    public List<DataRes> findByStationGroup(String stationGroupSerialNumber,
+        LocalDateTime startDate,
         LocalDateTime endDate) {
         return dataQueryRepository.findByStationGroup(stationGroupSerialNumber, startDate, endDate);
     }

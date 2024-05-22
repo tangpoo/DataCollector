@@ -20,11 +20,11 @@ public class IpAccessInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request,
         HttpServletResponse response, Object handler) throws Exception {
         String clientIp = ClientIp.getClientIP(request);
-        if(clientIp.equals("127.0.0.1")){
+        if (clientIp.equals("127.0.0.1")) {
             return true;
         }
 
-        if(!whiteIpRepository.findByAccessIp(clientIp).isPresent()){
+        if (!whiteIpRepository.findByAccessIp(clientIp).isPresent()) {
             log.warn("Forbidden access, URI: {}, IP: {}", request.getRequestURI(), clientIp);
             response.sendError(403, "IP Forbidden");
             return false;

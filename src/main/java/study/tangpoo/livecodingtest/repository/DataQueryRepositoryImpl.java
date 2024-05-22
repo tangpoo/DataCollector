@@ -43,13 +43,15 @@ public class DataQueryRepositoryImpl implements DataQueryRepository {
     }
 
     @Override
-    public List<DataRes> findByStationGroup(String stationGroupSerialNumber, LocalDateTime startDate,
+    public List<DataRes> findByStationGroup(String stationGroupSerialNumber,
+        LocalDateTime startDate,
         LocalDateTime endDate) {
 
         Double average = queryFactory
             .select(dataEntity.dataSet.avg())
             .from(dataEntity)
-            .leftJoin(dataDeviceEntity).on(dataEntity.serialNumber.eq(dataDeviceEntity.serialNumber))
+            .leftJoin(dataDeviceEntity)
+            .on(dataEntity.serialNumber.eq(dataDeviceEntity.serialNumber))
             .where(dataDeviceEntity.stationGroupSerial.eq(stationGroupSerialNumber),
                 (dataEntity.recordedAt.between(startDate, endDate)))
             .fetchOne();
