@@ -21,14 +21,15 @@ public class DataDeviceService {
 
     public DataDeviceRes saveDataDevice(DataDeviceReq dataDeviceReq) {
 
-        DataDeviceEntity dataDeviceEntity = new DataDeviceEntity(dataDeviceReq.getSerialNumber(), dataDeviceReq.getStationGroupSerial());
+        DataDeviceEntity dataDeviceEntity = new DataDeviceEntity(dataDeviceReq.getSerialNumber(),
+            dataDeviceReq.getStationGroupSerial());
 
-        if(dataDeviceRepository.existsBySerialNumber(dataDeviceEntity.getSerialNumber())){
+        if (dataDeviceRepository.existsBySerialNumber(dataDeviceEntity.getSerialNumber())) {
             throw new DataIntegrityViolationException("중복된 데이터 수집 장치입니다.");
         }
 
         StationGroupEntity stationGroupEntity = stationGroupRepository.findBySerialNumber(
-            dataDeviceEntity.getSerialNumber()).orElseThrow(
+            dataDeviceEntity.getStationGroupSerial()).orElseThrow(
             () -> new EntityNotFoundException("시리얼 넘버의 데이터 수집 장치 그룹이 존재하지 않습니다.")
         );
 

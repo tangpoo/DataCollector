@@ -7,5 +7,6 @@ import study.tangpoo.livecodingtest.entity.StationGroupEntity;
 public interface StationGroupRepository extends JpaRepository<StationGroupEntity, Long> {
 
     Optional<StationGroupEntity> findBySerialNumber(String serialNumber);
+
     boolean existsBySerialNumber(String serialNumber);
 }

@@ -8,7 +8,6 @@ import jakarta.persistence.Id;
 import java.time.LocalDateTime;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.CreatedDate;
 
 @Entity
 @Getter
@@ -31,7 +30,8 @@ public class DataEntity {
     @Column
     private LocalDateTime recordedAt;
 
-    public DataEntity(String serialNumber, Integer interval, Integer dataSet, LocalDateTime recordedAt) {
+    public DataEntity(String serialNumber, Integer interval, Integer dataSet,
+        LocalDateTime recordedAt) {
         this.serialNumber = serialNumber;
         this.timeInterval = interval;
         this.dataSet = dataSet;
