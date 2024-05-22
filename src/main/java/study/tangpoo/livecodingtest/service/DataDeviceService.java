@@ -2,6 +2,7 @@ package study.tangpoo.livecodingtest.service;
 
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import study.tangpoo.livecodingtest.dto.dataDevice.DataDeviceReq;
@@ -12,6 +13,7 @@ import study.tangpoo.livecodingtest.entity.StationGroupEntity;
 import study.tangpoo.livecodingtest.repository.DataDeviceRepository;
 import study.tangpoo.livecodingtest.repository.StationGroupRepository;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class DataDeviceService {

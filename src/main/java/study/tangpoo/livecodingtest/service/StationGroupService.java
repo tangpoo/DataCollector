@@ -1,6 +1,7 @@
 package study.tangpoo.livecodingtest.service;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import study.tangpoo.livecodingtest.dto.stationGroup.StationGroupReq;
@@ -8,6 +9,7 @@ import study.tangpoo.livecodingtest.dto.stationGroup.StationGroupRes;
 import study.tangpoo.livecodingtest.entity.StationGroupEntity;
 import study.tangpoo.livecodingtest.repository.StationGroupRepository;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class StationGroupService {

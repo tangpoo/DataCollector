@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import study.tangpoo.livecodingtest.dto.data.DataReq;
@@ -13,6 +14,7 @@ import study.tangpoo.livecodingtest.repository.DataDeviceRepository;
 import study.tangpoo.livecodingtest.repository.DataQueryRepository;
 import study.tangpoo.livecodingtest.repository.DataRepository;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 @Transactional

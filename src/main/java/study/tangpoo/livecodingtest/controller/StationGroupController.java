@@ -5,6 +5,7 @@ import static study.tangpoo.livecodingtest.message.Message.SUCCESS;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +16,7 @@ import study.tangpoo.livecodingtest.dto.stationGroup.StationGroupReq;
 import study.tangpoo.livecodingtest.dto.stationGroup.StationGroupRes;
 import study.tangpoo.livecodingtest.service.StationGroupService;
 
+@Slf4j
 @Tag(name = "StationGroup API")
 @RestController
 @RequiredArgsConstructor

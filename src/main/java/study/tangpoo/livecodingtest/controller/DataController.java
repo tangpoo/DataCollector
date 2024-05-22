@@ -7,6 +7,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import java.time.LocalDateTime;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +20,7 @@ import study.tangpoo.livecodingtest.dto.data.DataReq;
 import study.tangpoo.livecodingtest.dto.data.DataRes;
 import study.tangpoo.livecodingtest.service.DataService;
 
+@Slf4j
 @Tag(name = "Data API")
 @RestController
 @RequiredArgsConstructor
