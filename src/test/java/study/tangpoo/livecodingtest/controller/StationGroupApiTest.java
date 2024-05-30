@@ -13,7 +13,6 @@ import study.tangpoo.livecodingtest.dto.stationGroup.StationGroupReq;
 public class StationGroupApiTest extends ApiTest {
 
     @Test
-    @Transactional
     void 그룹등록() {
 
         final StationGroupReq request = StationGroupSteps.그룹등록요청_생성();
