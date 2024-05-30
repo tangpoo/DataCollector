@@ -1,5 +1,6 @@
 package study.tangpoo.livecodingtest.service;
 
+import jakarta.validation.ValidationException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,9 +23,12 @@ public class DataService {
 
     private final DataRepository dataRepository;
     private final DataQueryRepository dataQueryRepository;
-    private final DataDeviceRepository dataDeviceRepository;
 
     public void saveData(DataReq dataReq) {
+        if(dataReq.getDataSet() == null){
+            throw new ValidationException("dataSet은 필수입니다.");
+        }
+
         List<DataEntity> dataEntityList = convertData(
             dataReq.getSerialNumber(),
             dataReq.getInterval(),
@@ -69,6 +73,10 @@ public class DataService {
     }
 
     private List<Integer> tokenize(String hexaData) {
+        if(hexaData.length() < 4){
+            throw new ValidationException("dataSet은 4자리 이상이어야 합니다.");
+        }
+
         List<Integer> dataList = new ArrayList<>();
 
         for (int i = 0; i < hexaData.length(); i += 4) {
@@ -79,18 +87,6 @@ public class DataService {
             }
         }
 
-//        while(hexaData.length() >= 4){
-//            String substring = hexaData.substring(0, 4);
-//            hexaData = hexaData.substring(0, 4);
-//
-//            Integer decimalValue = Integer.parseInt(substring, 16);
-//            dataList.add(decimalValue);
-//        }
-
-//        if(!hexaData.isEmpty()){
-//            Integer decimalValue = Integer.parseInt(hexaData, 16);
-//            dataList.add(decimalValue);
-//        }
 
         return dataList;
     }
