@@ -7,6 +7,4 @@ import study.tangpoo.livecodingtest.entity.DataDeviceEntity;
 public interface DataDeviceRepository extends JpaRepository<DataDeviceEntity, Long> {
 
     boolean existsBySerialNumber(String serialNumber);
-
-    Optional<DataDeviceEntity> findBySerialNumber(String dataDeviceSerialNumber);
 }
