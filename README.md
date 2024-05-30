@@ -47,3 +47,10 @@ Data 등록
 ----
 
 # 통계 정보 조회 최적화
+
+Data를 16진수에서 10진수로 변환하여 저장합니다.
+serialNumber(혹은 stationGroupSerialNumber)와 일치하고, startTime ~ endTime 사이에 위치하는
+data 테이블에서 data_set의 avg를 먼저 추출한 후,
+다음 조회 쿼리에서 avg와 함께 response 객체로 Projection 합니다.
+이로인해 사용되지 않는 데이터의 조회를 차단할 수 있고, 데이터 조회를 DB Level에서 최적화 함으로써
+성능을 최적화하고 리소스 사용을 최소화 하였습니다.
