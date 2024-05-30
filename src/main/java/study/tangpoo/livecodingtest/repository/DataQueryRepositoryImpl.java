@@ -32,9 +32,13 @@ public class DataQueryRepositoryImpl implements DataQueryRepository {
                 dataEntity.recordedAt.between(startDate, endDate))
             .fetchOne();
 
+        if(average == null){
+            throw new EntityNotFoundException("조건에 맞는 데이터가 존재하지 않습니다.");
+        }
+
         average = Math.round(average * 10.0) / 10.0;
 
-        DataRes dataRes = queryFactory
+        return queryFactory
             .select(Projections.constructor(DataRes.class,
                 dataDeviceEntity.id,
                 dataDeviceEntity.serialNumber,
@@ -43,12 +47,6 @@ public class DataQueryRepositoryImpl implements DataQueryRepository {
             .from(dataDeviceEntity)
             .where(dataDeviceEntity.serialNumber.eq(serialNumber))
             .fetchOne();
-
-        if(dataRes == null){
-            throw new EntityNotFoundException("시리얼 넘버의 데이터 수집 장치가 존재하지 않습니다.");
-        }
-
-        return dataRes;
     }
 
     @Override
@@ -65,9 +63,13 @@ public class DataQueryRepositoryImpl implements DataQueryRepository {
                 (dataEntity.recordedAt.between(startDate, endDate)))
             .fetchOne();
 
+        if(average == null){
+            throw new EntityNotFoundException("조건에 맞는 데이터가 존재하지 않습니다.");
+        }
+
         average = Math.round(average * 10.0) / 10.0;
 
-        List<DataRes> dataResList = queryFactory
+        return queryFactory
             .select(Projections.constructor(DataRes.class,
                 dataDeviceEntity.id,
                 dataDeviceEntity.serialNumber,
@@ -76,11 +78,5 @@ public class DataQueryRepositoryImpl implements DataQueryRepository {
             .from(dataDeviceEntity)
             .where(dataDeviceEntity.stationGroupSerial.eq(stationGroupSerialNumber))
             .fetch();
-
-        if(dataResList.isEmpty()){
-            throw new EntityNotFoundException("그룹의 데이터 수집 장치가 존재하지 않습니다.");
-        }
-
-        return dataResList;
     }
 }
