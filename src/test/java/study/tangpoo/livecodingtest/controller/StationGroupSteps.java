@@ -9,11 +9,11 @@ import study.tangpoo.livecodingtest.dto.stationGroup.StationGroupReq;
 public class StationGroupSteps {
 
     public static StationGroupReq 그룹등록요청_생성() {
-        final String serialNumber = "0xa";
+        final String serialNumber = "stationGroupSerial";
         return new StationGroupReq(serialNumber);
     }
 
-    static ExtractableResponse<Response> 그룹등록요청(final StationGroupReq request) {
+    public static ExtractableResponse<Response> 그룹등록요청(final StationGroupReq request) {
         return RestAssured.given().log().all()
             .contentType(MediaType.APPLICATION_JSON_VALUE)
             .body(request)
