@@ -5,11 +5,14 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Index;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Getter
+@Table(indexes = {@Index(name = "idx_station_group_serial", columnList = "station_group_serial")})
 @NoArgsConstructor
 public class DataDeviceEntity extends BaseTime {
 
